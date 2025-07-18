@@ -2,22 +2,21 @@
 import DebateCard from "@/components/home/DebateCard";
 import { featuredDebates } from "@/components/home/FeaturedDebate";
 import Container from "@/components/shared/Container";
-import { Button } from "@/components/ui/button";
-import { Plus, Trophy } from "lucide-react";
-import Link from "next/link";
+
 import React from "react";
 import DebateBtn from "./DebateBtn";
 
 const categories = [
-  { title: "Politics" },
-  { title: "Technology" },
-  { title: "Health" },
-  { title: "Environment" },
-  { title: "Education" },
+  { title: "রাজনীতি" },
+  { title: "প্রযুক্তি" },
+  { title: "স্বাস্থ" },
+  { title: "বিনোদন" },
+  { title: "শিক্ষা" },
+  { title: " অন্যান্য" },
 ];
 
 const Debates = () => {
-  const [category, setCategory] = React.useState("All");
+  const [category, setCategory] = React.useState("সব");
 
   return (
     <Container>
@@ -40,11 +39,11 @@ const Debates = () => {
               <div className="hidden lg:flex items-center flex-wrap gap-3 ">
                 <div
                   className={`h-[35px] ${
-                    category === "All" ? "bg-[crimson]" : "bg-[#50A2FF] ]"
+                    category === "সব" ? "bg-[crimson]" : "bg-[#50A2FF] ]"
                   } px-3  rounded-[25px] flex items-center text-white justify-center font-Poppins cursor-pointer`}
-                  onClick={() => setCategory("All")}
+                  onClick={() => setCategory("সব")}
                 >
-                  All
+                  সব
                 </div>
                 {categories &&
                   categories?.slice(0, 5)?.map((item: any, index: number) => (
@@ -78,7 +77,7 @@ const Debates = () => {
             ))}
           </div>
         </div>
-      </div> 
+      </div>
     </Container>
   );
 };

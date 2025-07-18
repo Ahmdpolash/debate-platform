@@ -5,10 +5,12 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { MessageSquare, Users, Trophy } from "lucide-react";
 import Container from "../shared/Container";
+import { heroBoxData } from "@/constant";
 
 export function HeroSection() {
   return (
     <Container>
+      {/* top content */}
       <div className="text-center min-h-[calc(100vh_-_10px)] flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,54 +46,24 @@ export function HeroSection() {
             </div>
           </div>
 
+          {/* bottom grid box */}
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 cursor-pointer lg:mt-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-center border rounded-lg  border-gray-300 p-4 shadow-md"
-            >
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MessageSquare className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">
-                যুক্তি দিন, পক্ষ নিন
-              </h3>
-              <p className="text-gray-600">
-                নতুন বিতর্ক শুরু করুন অথবা থাকা বিতর্কে যোগ দিন পক্ষ বা বিপক্ষে
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-center border rounded-lg  border-gray-300 p-4 shadow-md"
-            >
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-8 w-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">মতামত দিন, ভোট দিন</h3>
-              <p className="text-gray-600">
-                আপনার যুক্তি শেয়ার করুন আর অন্যের যুক্তিতে ভোট দিন - কে জিতবে
-                সেটাই দেখার!
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-center border rounded-lg  border-gray-300 p-4 shadow-md"
-            >
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Trophy className="h-8 w-8 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">শীর্ষে উঠুন!</h3>
-              <p className="text-gray-600">
-                লিডারবোর্ডে নিজের নাম তুলে ধরুন আর হয়ে উঠুন সেরা বিতার্কিক
-              </p>
-            </motion.div>
+            {heroBoxData.map((data) => (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-center border rounded-lg  border-gray-300 p-4 shadow-md"
+              >
+                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  {/* <MessageSquare className="h-8 w-8 text-blue-600" /> */}
+                  <data.icon className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{data.title}</h3>
+                <p className="text-gray-600">{data.subTitle}</p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

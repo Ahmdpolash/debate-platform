@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import Providers from "@/lib/Provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +32,9 @@ export default function RootLayout({
       >
         <div className="bg-gradient-to-br from-slate-50 to-slate-100">
           <Navbar />
+
           <main className="">{children}</main>
+
           <Footer />
         </div>
       </body>

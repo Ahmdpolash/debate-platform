@@ -78,7 +78,7 @@ const Debates = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> 
     </Container>
   );
 };

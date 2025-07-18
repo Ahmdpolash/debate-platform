@@ -9,7 +9,7 @@ import Container from "../shared/Container";
 import DebateCard from "./DebateCard";
 
 // This would typically come from an API call
-const featuredDebates = [
+export const featuredDebates = [
   {
     id: "debate-1",
     title: "কৃত্রিম বুদ্ধিমত্তা: আশীর্বাদ নাকি অভিশাপ?",

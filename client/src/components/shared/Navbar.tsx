@@ -1,30 +1,32 @@
 "use client";
 import React, { useState } from "react";
-import logo from "@/logo.png";
+
 // react icons
-import { IoIosSearch } from "react-icons/io";
+
 import { CiMenuFries } from "react-icons/ci";
-import { motion } from "framer-motion";
+
 import Image from "next/image";
 import Link from "next/link";
-import { Cross, CrossIcon, Trophy, XIcon } from "lucide-react";
-import { div } from "framer-motion/client";
+import { Trophy, XIcon } from "lucide-react";
 
 const Navbar = () => {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+
   return (
     <div className="">
       <div className="lg:max-w-6xl mx-auto mt-3 absolute top-0 w-full left-[50%] -translate-x-[50%] z-10 lg:px-0 px-4">
         <nav className="flex items-center justify-between w-full relative dark:bg-slate-900 bg-white rounded-full px-[10px] py-[8px] border border-teal-400/50 ">
           {/* logo */}
-          <Image
-            src={"/logo.png"}
-            alt="logo"
-            width={70}
-            height={70}
-            className="w-[80px] cursor-pointer"
-          />
+          <Link href={"/"}>
+            <Image
+              src={"/logo.png"}
+              alt="logo"
+              width={70}
+              height={70}
+              className="w-[80px] cursor-pointer"
+            />
+          </Link>
 
           {/* nav links */}
           <ul className="items-center gap-[20px] text-[1rem] text-[#424242] md:flex hidden">
@@ -88,9 +90,12 @@ const Navbar = () => {
 
       {openModal && (
         <>
-          <div  className="fixed h-screen w-full flex justify-center items-center backdrop-blur-sm z-10 cursor-pointer">
+          <div className="fixed h-screen w-full flex justify-center items-center backdrop-blur-sm z-10 cursor-pointer">
             <div className=" bg-gray-300 rounded-lg  h-[200px] w-lg border bg-blend-exclusio relative">
-              <div onClick={()=> setOpenModal(false)} className="absolute top-3 right-3">
+              <div
+                onClick={() => setOpenModal(false)}
+                className="absolute top-3 right-3"
+              >
                 <XIcon size={25} />
               </div>
             </div>

@@ -13,8 +13,11 @@ import {
 import { useState } from "react";
 import Link from "next/link";
 import Container from "@/components/shared/Container";
+import { useSession } from "next-auth/react";
 
 const DebateDetails = () => {
+  const { data } = useSession();
+
   const [support, setSupport] = useState(false);
   const [oppose, setOppose] = useState(false);
 
@@ -72,6 +75,9 @@ const DebateDetails = () => {
       )
     );
   };
+
+
+  
 
   return (
     <Container>
@@ -145,11 +151,11 @@ const DebateDetails = () => {
               </div>
               <Button
                 variant="outline"
-                className="mt-4 w-full border-green-300 text-green-700 hover:bg-green-100"
+                className="mt-4 w-full border-green-300 text-green-700 hover:bg-green-100 cursor-pointer"
                 onClick={() => setSupport(!support)}
                 // onClick={() => setActiveTab("support")}
               >
-                পক্ষ নিন
+                সমর্থন করছি
               </Button>
             </div>
 
@@ -222,7 +228,7 @@ const DebateDetails = () => {
             <div className="bg-red-50 p-6 rounded-lg border border-red-100">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold text-red-800 flex items-center">
-                  <X className="h-5 w-5 mr-2" /> বিরোধিতা কারী
+                  <X className="h-5 w-5 mr-2" /> অসমর্থনকারী
                 </h3>
                 <span className="text-2xl font-bold text-red-600">
                   {debate.opposers}
@@ -230,11 +236,11 @@ const DebateDetails = () => {
               </div>
               <Button
                 variant="outline"
-                className="mt-4 w-full border-red-300 text-red-700 hover:bg-red-100"
+                className="mt-4 w-full border-red-300 text-red-700 hover:bg-red-100 cursor-pointer"
                 onClick={() => setOppose(!oppose)}
                 // onClick={() => setActiveTab("oppose")}
               >
-                বিপক্ষ নিন
+                অসমর্থন করছি
               </Button>
             </div>
 
@@ -304,9 +310,14 @@ const DebateDetails = () => {
         </div>
 
         {/* Back to Debates Link */}
-        <div className="mt-8 text-center">
+        <div className="mt-8 text-center ">
           <Link href="/debates">
-            <Button variant="outline">সব বিতর্কে ফিরে যান</Button>
+            <Button
+              variant="outline"
+              className="cursor-pointer border border-gray-500"
+            >
+              পিছনে যান{" "}
+            </Button>
           </Link>
         </div>
       </div>

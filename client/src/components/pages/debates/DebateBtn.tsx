@@ -39,7 +39,6 @@ const DebateBtn = () => {
         <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
             <DialogTitle>নতুন ডিবেট তৈরি করুন</DialogTitle>
-            
           </DialogHeader>
 
           <div className="grid gap-4 py-2">

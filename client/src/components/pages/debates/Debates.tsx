@@ -18,6 +18,8 @@ const categories = [
 const Debates = () => {
   const [category, setCategory] = React.useState("সব");
 
+
+
   return (
     <Container>
       <div className="py-12  lg:mt-12">

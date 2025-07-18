@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Clock, Users, MessageSquare } from "lucide-react"; // Importing relevant icons
+import { useSession } from "next-auth/react";
 
 const DebateCard = ({ debate, index }: { debate: any; index: number }) => {
+  const { data } = useSession();
   return (
     <div key={debate.id}>
       <motion.div

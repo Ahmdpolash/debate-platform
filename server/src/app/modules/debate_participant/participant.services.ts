@@ -25,6 +25,15 @@ const joinDebate = async (payload: JoinDebatePayload, res: Response) => {
   return newJoin;
 };
 
+const getParticipants = async (debateId: string) => {
+  const participants = await DebateParticipant.find({ debateId })
+    .populate("userId", "name email image")
+    .sort({ createdAt: 1 });
+
+  return participants;
+};
+
 export const participantService = {
   joinDebate,
+  getParticipants,
 };

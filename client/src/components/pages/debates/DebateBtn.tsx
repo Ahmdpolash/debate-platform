@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Dialog,
@@ -26,6 +26,20 @@ import {
 } from "@/components/ui/select";
 
 const DebateBtn = () => {
+  const [debateInfo, setDebateInfo] = useState({
+    title: "",
+    description: "",
+    duration: "",
+    tags: "",
+    category: "",
+    image: "",
+  });
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log(debateInfo);
+  };
+
   return (
     <Dialog>
       <form>
@@ -48,6 +62,9 @@ const DebateBtn = () => {
                 id="title"
                 name="title"
                 placeholder="ডিবেটের শিরোনাম লিখুন"
+                onChange={(e) =>
+                  setDebateInfo({ ...debateInfo, title: e.target.value })
+                }
               />
             </div>
 
@@ -57,6 +74,9 @@ const DebateBtn = () => {
                 id="description"
                 name="description"
                 placeholder="ডিবেটের বিস্তারিত বিবরণ লিখুন"
+                onChange={(e) =>
+                  setDebateInfo({ ...debateInfo, description: e.target.value })
+                }
               />
             </div>
 
@@ -66,12 +86,19 @@ const DebateBtn = () => {
                 id="tags"
                 name="tags"
                 placeholder="উদাহরণ: tech, ethics, politics"
+                onChange={(e) =>
+                  setDebateInfo({ ...debateInfo, tags: e.target.value })
+                }
               />
             </div>
 
             <div className="grid gap-2">
               <Label htmlFor="category">ক্যাটেগরি</Label>
-              <Select>
+              <Select
+                onValueChange={(value) =>
+                  setDebateInfo({ ...debateInfo, category: value })
+                }
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="একটি বিভাগ নির্বাচন করুন" />
                 </SelectTrigger>
@@ -90,12 +117,19 @@ const DebateBtn = () => {
                 id="banner"
                 name="banner"
                 placeholder="ছবির লিঙ্ক দিন (optional)"
+                onChange={(e) =>
+                  setDebateInfo({ ...debateInfo, image: e.target.value })
+                }
               />
             </div>
 
             <div className="grid gap-2">
               <Label htmlFor="duration">সময়</Label>
-              <Select>
+              <Select
+                onValueChange={(value) =>
+                  setDebateInfo({ ...debateInfo, duration: value })
+                }
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="সময়কাল নির্বাচন করুন" />
                 </SelectTrigger>

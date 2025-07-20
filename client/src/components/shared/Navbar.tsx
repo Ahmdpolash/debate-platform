@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LogIn, Trophy, XIcon } from "lucide-react";
 import { Button } from "../ui/button";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
@@ -63,15 +63,27 @@ const Navbar = () => {
                 লগইন করুন
               </button>
             ) : (
-              <div>
-                <Avatar className="cursor-pointer ">
+              <div className="flex items-center gap-4">
+                {/* <Avatar className="cursor-pointer ">
                   <AvatarImage
                     sizes="100"
-                    src={data?.user?.image ?? undefined}
+                    src={data?.user?.image}
                     alt="avatar"
                   />
                   <AvatarFallback>{data?.user?.name}</AvatarFallback>
-                </Avatar>
+                </Avatar> */}
+
+                <Button className="cursor-pointer" onClick={() => signOut()}>
+                  Log Out
+                </Button>
+
+                <Image
+                  src={data?.user?.image ?? ""}
+                  height={40}
+                  width={40}
+                  alt="user avatar"
+                  className="w-[40px] h-[40px] rounded-full cursor-pointer"
+                />
               </div>
             )}
 
